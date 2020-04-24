@@ -1,0 +1,13 @@
+(executable
+    (name pp)   
+    (modules pp)
+    (libraries ppx_fprint ppxlib))
+
+(rule
+    (target test.actual.ml)
+    (deps (:pp pp.exe) (:input test.ml))
+    (action (run ./%{pp} -debug-attribute-drop --impl %{input} -o %{target})))
+    
+(rule
+    (alias runtest)
+    (action (diff test.expected.ml test.actual.ml)))

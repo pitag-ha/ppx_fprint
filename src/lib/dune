@@ -1,0 +1,5 @@
+(library
+  (name ppx_fprint_lib)
+  (public_name ppx_fprint._lib)
+  (libraries rresult)
+  (preprocess (pps ppx_deriving.eq ppx_deriving.show)))
